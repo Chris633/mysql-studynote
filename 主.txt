@@ -4,8 +4,8 @@ mysql安装 略
 库：
 	SHOW DATABASES;
 	CREATE DATABASE name;
-	DROP DATABASE name;
-	USE DATABASE name;
+	DROP (DATABASE) name;
+	USE (DATABASE) name;
 
 *********************************************************
 表：
@@ -16,12 +16,13 @@ mysql安装 略
 	约束：
 		*x AUTO_INCREMENT   //必须PRIMARY KEY或UNIQUE,一个表只能有一个
 		*x NOT NULL
+		*x DEFAULT value|GETDATE()
 		** UNIQUE
 		** PRIMARY KEY (colume_name)   // 同时具有NOT NULL与UNIQUE性质
 		x* FOREIGN KEY (colume_name) REFERENCES table_name(unique_key) //关联的外键时必须满足1.colume_name不能为本表主键2.unique_key必须是主键或唯一索引(unique约束)
 		3.两个键必须有相同的数据类型
-		x* CHECK (column_name operator value)
-		*x DEFAULT value|GETDATE()
+		x* CHECK (column_name operator value) //检查是否满足后面的关系   
+		
 		
 		俩个*代表，create table语句时：第一个*代表约束可以随列加 第二个*代表约束可以最后加并且可以用CONSTRAINT对约束命名加
 
@@ -39,6 +40,7 @@ mysql安装 略
 		   `title` VARCHAR(100) NOT NULL,
 		   `author` VARCHAR(40) NOT NULL,
 		   `submission_date` DATE,
+		   
 		   `artical_id` INT UNSIGNED,
 		   PRIMARY KEY ( `id` ),
 		   CONSTRAINT f_key FOREIGN KEY (`artical_id`) REFERENCES artical(`id`)
@@ -87,6 +89,11 @@ r:
 		SELECT column_name,column_name FROM table_name ORDER BY column_name,column_name ASC|DESC;
 	limit:
 		SELECT column_name FROM table_name LIMIT number;
+		
+		
+GROUP BY
+		
+
 
 **********************************************************
 通配符：
